@@ -1,0 +1,51 @@
+<div *ngIf="posts.length > 0" class="wrapper">
+  <div *ngFor="let post of posts.reverse() | slice: 0 : postLimit ; let i = index " class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">
+        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+        <b>{{post.postNameOwner}}</b> Says:
+
+        <span *ngIf="loggedInUser.userId === post.postUserId" (click)="removePost(post.postId)" class="glyphicon glyphicon-remove remove-button" aria-hidden="true"></span>
+    </div>
+    <div class="panel-body">
+      <p class="post-content">{{post.postContent}}</p>
+      <div class="move-btn-right">
+        {{post.postUserLikes.length}} 
+        <span [ngClass]="{'liked': checkForLike(post)}" (click)="likePost(posts.length - i - 1)" class="glyphicon glyphicon-thumbs-up like-button" aria-hidden="true"></span>
+      </div>
+    </div>
+    <!-- List group -->
+    <ul class="list-group">
+      <li class="list-group-item">
+
+        <!-- Create comment form -->
+        <form #commentForm="ngForm" (ngSubmit)="createComment(commentForm,post.postId, posts.length - i - 1)" class="postForm" validate>
+          <div class="form-group">
+            <input required ngModel #comment="ngModel" maxlength="140" name="commentInput" type="text" class="form-control" placeholder="Comment on post!" aria-describedby="basic-addon1">
+          </div>
+          <div class="move-btn-right">
+            <p *ngIf="comment.value != null" >{{comment.value.length}}/140</p>
+            <button [disabled]="!commentForm.valid" type="submit" class="btn btn-primary">Comment</button>
+          </div>
+        </form>
+        <!-- END comment form -->
+
+      </li>
+    </ul>
+    <ul *ngFor="let postComment of post.postComments.reverse() ; let a = index " class="list-group">
+        <li class="list-group-item">
+          <p class="comment-text">
+            <b>{{postComment.commentName}}</b>: {{postComment.comment}}
+            <span *ngIf="loggedInUser.userId === postComment.commentUserId" (click)="removeComment(postComment, posts.length - i - 1, post.postComments.length - a - 1)" class="glyphicon glyphicon-remove remove-button" aria-hidden="true"></span>
+          </p>
+        </li>
+    </ul>
+  </div>
+</div>
+
+<div class="loadButtonWrapper">
+  <button *ngIf="postLimit < posts.length" (click)="showMorePosts()" type="button" class="btn btn-default load-post-button">Load More Posts</button>
+</div>
+
+
+

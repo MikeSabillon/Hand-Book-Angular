@@ -1,0 +1,55 @@
+.post-content
+{
+    overflow-wrap: break-word;
+    margin-bottom: 0px;
+}
+
+.move-btn-right
+{
+    text-align: right;
+}
+
+.move-btn-right button
+{
+    display: inline-block;
+}
+
+.move-btn-right p
+{
+    display: inline-block;
+    margin-right: 2%;
+}
+
+.remove-button
+{
+    float: right;
+    cursor: pointer;
+    margin-top: 3px;
+    color: red;
+}
+
+.like-button
+{
+    cursor: pointer;
+    margin-left: 2px;
+}
+
+.liked
+{
+    color: rgb(80, 80, 255);
+}
+
+.comment-text
+{
+    margin: 0px;
+}
+
+.load-post-button
+{
+    width: 100%;
+}
+
+.loadButtonWrapper
+{
+    height: 50px;
+}

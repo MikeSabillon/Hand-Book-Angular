@@ -1,0 +1,41 @@
+.well-margin
+{
+    margin-top: 1%;
+    margin-bottom: 0px;
+}
+
+.margin-top
+{
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+
+.input-margin
+{
+    margin-top: 1%;
+}
+
+.form-button
+{
+    float: right;
+    margin-top: 1%;
+}
+
+.error-msg
+{
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+.margin-fix
+{
+    margin-bottom: 0px;
+}
+
+.padding-fix
+{
+    padding-left: 0px;
+    padding-right: 0px;
+}

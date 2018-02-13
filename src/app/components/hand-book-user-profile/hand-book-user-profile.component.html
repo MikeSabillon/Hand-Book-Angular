@@ -1,0 +1,72 @@
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="page-header">
+                    <h1><small>Profile: {{loggedInUser.name}} {{loggedInUser.lastName}}</small></h1>
+                </div>
+            
+                <button (click)="editInfo()" type="button" class="btn btn-primary">
+                    Edit Profile
+                </button>
+
+                <div class="panel panel-default margin-top">
+             
+                    <div *ngIf="!isEditing" class="panel-body">
+                        <div class="well well-sm well-margin">Name: {{loggedInUser.name}} {{loggedInUser.lastName}}</div>
+                        <div class="well well-sm well-margin">E-mail: {{loggedInUser.email}}</div>
+                        <div class="well well-sm well-margin">Age: {{loggedInUser.age}}</div>
+                    </div>
+                    
+                    <div *ngIf="isEditing" class="panel-body">
+                        <form #editProfileForm="ngForm" (ngSubmit)="saveInfo()" validate>
+                            <div class="input-group input-margin">
+                                <span class="input-group-addon" id="basic-addon1">Name</span>
+                                <input required [(ngModel)]="name" name="name" minlength="3" maxlength="15" type="text" class="form-control" placeholder="Name" aria-describedby="basic-addon1">
+                            </div>
+                            
+                            <div *ngIf="name === '' || name.length < 3" class="alert alert-warning" role="alert">Name cannot be empty, must be larger than 3 and less than 15 characters.</div>
+                            
+                            <div class="input-group input-margin">
+                                <span class="input-group-addon" id="basic-addon1">Last Name</span>
+                                <input required [(ngModel)]="lastName" name="lastname" minlength="5" maxlength="20" type="text" class="form-control" placeholder="Last Name" aria-describedby="basic-addon1">
+                            </div>
+                            
+                            <div *ngIf="lastName === '' || lastName.length < 5" class="alert alert-warning" role="alert">Last Name cannot be empty, must be larger than 5 and less than 20 characters.</div>
+                            
+                            <div class="input-group input-margin">
+                                <span class="input-group-addon" id="basic-addon1">E-mail</span>
+                                <input required [(ngModel)]="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" name="email" maxlength="30" type="email" class="form-control" placeholder="E-mail" aria-describedby="basic-addon1">
+                            </div>
+
+                            <div *ngIf="email === ''" class="alert alert-warning" role="alert">E-mail cannot be empty</div>
+
+                            <div class="input-group input-margin">
+                                <span class="input-group-addon" id="basic-addon1">Age</span>
+                                <input required [(ngModel)]="userAge" name="age" maxlength="5" type="text" class="form-control" placeholder="Age" aria-describedby="basic-addon1">
+                            </div>
+
+                            <div *ngIf="userAge === '' || userAge <= 0" class="alert alert-warning" role="alert">Age cannot be empty and greater than 0</div>
+
+                            <div *ngIf="errorSubmit" class="col-xs-12 error-msg">
+                                <div class="alert alert-danger margin-fix" role="alert" [innerHTML]="errorMessage">...</div>
+                            </div>
+
+                            <div class="col-xs-12 padding-fix">
+                                <button [disabled]="!editProfileForm.valid" type="submit" class="btn btn-primary form-button">
+                                    <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+                                     Save Changes
+                                </button>
+                            </div>
+                            
+                        </form>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

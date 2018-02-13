@@ -1,0 +1,16 @@
+<div class="panel panel-default">
+        
+    <div class="panel-body">
+        <form #postForm="ngForm" (ngSubmit)="postMessage(postForm)" class="postForm" validate>
+            <div class="form-group">
+            <textarea required ngModel #newPost="ngModel" maxlength="140" name="userNewPost" type="text" class="form-control" placeholder="Tell us what you are thinking!" aria-describedby="basic-addon1"></textarea>
+            </div>
+        
+            <div class="move-btn-right">
+                <p *ngIf="newPost.value != null" >{{newPost.value.length}} / 140</p>
+                <button [disabled]="!postForm.valid" type="submit" class="btn btn-primary">Post</button>
+            </div>
+        </form>
+    </div>
+    
+</div>

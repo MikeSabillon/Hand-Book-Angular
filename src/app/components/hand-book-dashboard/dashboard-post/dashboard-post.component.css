@@ -1,0 +1,15 @@
+.postForm
+{
+    text-align: right;
+}
+
+.move-btn-right button
+{
+    display: inline-block;
+}
+
+.move-btn-right p
+{
+    display: inline-block;
+    margin-right: 2%;
+}

@@ -1,0 +1,8 @@
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+
+    <app-dashboard-post (onEvent)="getAllPosts()" [currentUser]="currentUser"></app-dashboard-post>
+    <app-dashboard-user-posts (onEvent)="getAllPosts()" [posts]="allUserPosts"></app-dashboard-user-posts>
+ 
+  </div>
+</div>
