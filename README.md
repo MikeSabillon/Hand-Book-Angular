@@ -1,5 +1,7 @@
 # Hand Book App
 
+A front-end project I did to learn angular cli. It's an app mocking a social network, has login, posts, comments and user creation, uses a spring-boot back-end to work, you can find it here: https://github.com/MikeSabillon/Hand-Book-Back-End	
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.1.
 
 ## Development server
